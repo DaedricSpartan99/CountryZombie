@@ -1,0 +1,6 @@
+name: CountryZombie
+version: 1.0
+Author: Numixe & GiantRaven
+main: atlas.numixe.MainPlugin
+commands:
+        
