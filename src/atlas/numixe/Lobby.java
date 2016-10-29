@@ -2,6 +2,7 @@ package atlas.numixe;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import org.bukkit.entity.Player;
 
@@ -30,12 +31,12 @@ public class Lobby {
 		if (map.containsKey(player.getName()))
 			return false;
 		
-		if (map.size() == SIZEOF_LOBBY)
+		if (isFull())
 			return true;
 		
 		map.put(player.getName(), PlayerID.NONE);
 		
-		if (map.size() == SIZEOF_LOBBY)	// verify another time to notify the full status
+		if (isFull())	// verify another time to notify the full status
 			return true;
 		
 		return false;
@@ -55,6 +56,16 @@ public class Lobby {
 	public void clear() {
 		
 		map.clear();
+	}
+	
+	public boolean isFull() {
+		
+		return map.size() == SIZEOF_LOBBY;
+	}
+	
+	public Set<String> getPlayerNames() {
+		
+		return map.keySet();
 	}
 	
 	public void randomAssignID() {
